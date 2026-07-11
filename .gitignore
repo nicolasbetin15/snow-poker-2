@@ -1,0 +1,27 @@
+# frost-trio — publish the full repo (code + data provenance) EXCEPT the
+# trained model weights/artifacts, the training scratch folder, and credentials.
+
+# credentials / local runtime (NEVER published)
+.env
+*.env
+miner_env
+miner_env/
+
+# trained model weights & artifacts (NEVER published — private competitive edge)
+model/artifacts/
+model/artifacts_staging/
+model/artifacts_backups/
+model/data_cache/
+*.pkl
+*.joblib
+*.pt
+*.bin
+
+# training scratch folder
+training/
+
+# local caches / logs
+__pycache__/
+*.pyc
+catboost_info/
+*.log

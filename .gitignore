@@ -12,6 +12,7 @@ model/artifacts/
 model/artifacts_staging/
 model/artifacts_backups/
 model/data_cache/
+model/data_cache
 *.pkl
 *.joblib
 *.pt
@@ -25,3 +26,11 @@ __pycache__/
 *.pyc
 catboost_info/
 *.log
+
+# prose docs — withheld (operator preference).
+# NOTE: this hides the PROSE only. The algorithms stay public in model/*.py because
+# the manifest's implementation_files must remain published for the miner to be
+# transparent. model_card_url is cleared in poker44_miner.py to match.
+README.md
+MODEL_CARD.md
+docs/

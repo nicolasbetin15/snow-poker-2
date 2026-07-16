@@ -75,7 +75,11 @@ class MLMiner(BaseMinerNeuron):
         self.poker_model = get_model()
         meta = self.poker_model.meta
         repo_url = os.environ.get("POKER44_MODEL_REPO_URL", "").strip().rstrip("/")
-        model_card = f"{repo_url}#readme" if repo_url.count("/") >= 4 else ""
+        # README.md is intentionally not published (see .gitignore), so advertising
+        # repo_url#readme would point at a page that does not exist. An empty value is
+        # dropped by normalize_model_manifest, and model_card_url is not one of
+        # MIN_REQUIRED_MANIFEST_FIELDS, so compliance stays "transparent".
+        model_card = ""
         self.model_manifest = build_local_model_manifest(
             repo_root=Path(REPO_DIR),
             implementation_files=[
